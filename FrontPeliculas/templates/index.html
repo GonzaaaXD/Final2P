@@ -11,15 +11,14 @@
         <h1 class="text-3xl font-bold text-center text-indigo-600">CRUD de Películas</h1>
 
         <!-- Agregar Película -->
-        <div>
-            <h2 class="text-xl font-semibold mb-2">Agregar Película</h2>
-            <form action="/agregar" method="POST" class="space-y-2">
-                <input type="text" name="titulo" placeholder="Título" class="w-full border rounded px-3 py-2" required>
-                <input type="text" name="director" placeholder="Director" class="w-full border rounded px-3 py-2" required>
-                <input type="number" name="anio" placeholder="Año" class="w-full border rounded px-3 py-2" required>
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Agregar</button>
-            </form>
-        </div>
+        <h2 class="text-xl font-semibold mb-2">Agregar Película</h2>
+        <form action="/agregar" method="POST" class="space-y-2">
+            <input type="text" name="title" placeholder="Título" class="w-full border rounded px-3 py-2" required>
+            <input type="text" name="genre" placeholder="Género" class="w-full border rounded px-3 py-2" required>
+            <input type="number" name="year" placeholder="Año" class="w-full border rounded px-3 py-2" required>
+            <input type="text" name="classification" placeholder="Clasificación (A, B, C)" class="w-full border rounded px-3 py-2" maxlength="1" required>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Agregar</button>
+        </form>
 
         <!-- Actualizar Película -->
         <div>
