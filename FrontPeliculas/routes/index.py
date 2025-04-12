@@ -12,7 +12,7 @@ def index():
 def agregar_pelicula():
     title = request.form.get("titulo")
     genre = request.form.get("genre")
-    year = request.form.get("anio")
+    year = request.form.get("year")
     classification = "A"  
 
     try:

@@ -12,33 +12,34 @@
 
         <!-- Agregar Película -->
         <h2 class="text-xl font-semibold mb-2">Agregar Película</h2>
-        <form action="/agregar" method="POST" class="space-y-2">
-            <input type="text" name="title" placeholder="Título" class="w-full border rounded px-3 py-2" required>
-            <input type="text" name="genre" placeholder="Género" class="w-full border rounded px-3 py-2" required>
-            <input type="number" name="year" placeholder="Año" class="w-full border rounded px-3 py-2" required>
-            <input type="text" name="classification" placeholder="Clasificación (A, B, C)" class="w-full border rounded px-3 py-2" maxlength="1" required>
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Agregar</button>
-        </form>
+            <form action="/agregar" method="POST" class="space-y-2">
+                <input type="text" name="title" placeholder="Título" class="w-full border rounded px-3 py-2" required>
+                <input type="text" name="genre" placeholder="Género" class="w-full border rounded px-3 py-2" required>
+                <input type="number" name="year" placeholder="Año" class="w-full border rounded px-3 py-2" required>
+                <input type="text" name="classification" placeholder="Clasificación (A, B, C)" class="w-full border rounded px-3 py-2" maxlength="1" required>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Agregar</button>
+            </form>
 
         <!-- Actualizar Película -->
         <div>
             <h2 class="text-xl font-semibold mb-2">Actualizar Película</h2>
-            <form action="/actualizar" method="POST" class="space-y-2">
-                <input type="number" name="id" placeholder="ID" class="w-full border rounded px-3 py-2" required>
-                <input type="text" name="titulo" placeholder="Nuevo Título" class="w-full border rounded px-3 py-2">
-                <input type="text" name="director" placeholder="Nuevo Director" class="w-full border rounded px-3 py-2">
-                <input type="number" name="anio" placeholder="Nuevo Año" class="w-full border rounded px-3 py-2">
-                <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Actualizar</button>
-            </form>
+                <form action="/actualizar" method="POST" class="space-y-2">
+                    <input type="number" name="id" placeholder="ID" class="w-full border rounded px-3 py-2" required>
+                    <input type="text" name="title" placeholder="Nuevo Título" class="w-full border rounded px-3 py-2">
+                    <input type="text" name="genre" placeholder="Nuevo Género" class="w-full border rounded px-3 py-2">
+                    <input type="number" name="year" placeholder="Nuevo Año" class="w-full border rounded px-3 py-2">
+                    <input type="text" name="classification" placeholder="Nueva Clasificación" class="w-full border rounded px-3 py-2">
+                    <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Actualizar</button>
+                </form>
         </div>
 
         <!-- Eliminar Película -->
         <div>
             <h2 class="text-xl font-semibold mb-2">Eliminar Película</h2>
-            <form action="/eliminar" method="POST" class="space-y-2">
-                <input type="number" name="id" placeholder="ID" class="w-full border rounded px-3 py-2" required>
-                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Eliminar</button>
-            </form>
+                <form action="/eliminar" method="POST" class="space-y-2">
+                    <input type="number" name="id" placeholder="ID" class="w-full border rounded px-3 py-2" required>
+                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Eliminar</button>
+                </form>
         </div>
 
         <!-- Buscar Película -->

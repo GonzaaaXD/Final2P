@@ -14,12 +14,14 @@ def subir_pelicula(movie: schemas.MovieCreate, db: Session = Depends(get_db)):
     return db_movie
 
 @router.put("/pelicula/{movie_id}", response_model=schemas.MovieCreate, tags=['Peliculas CRUD'])
-def actualizar_pelicula(movie_id: int, movie: schemas.MovieCreate, db: Session = Depends(get_db)):
+def actualizar_pelicula(movie_id: int, movie: schemas.MovieUpdate, db: Session = Depends(get_db)):
     db_movie = db.query(models.Movie).filter(models.Movie.id == movie_id).first()
     if not db_movie:
         raise HTTPException(status_code=404, detail="Pelicula no encontrada")
-    for key, value in movie.dict().items():
+
+    for key, value in movie.dict(exclude_unset=True).items():
         setattr(db_movie, key, value)
+
     db.commit()
     db.refresh(db_movie)
     return db_movie
