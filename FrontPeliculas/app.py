@@ -70,5 +70,22 @@ def eliminar_por_id_form():
         flash(f"Error de conexión: {e}", "error")
     return redirect('/')
 
+@app.route("/buscar", methods=["GET"])
+def buscar_pelicula():
+    movie_id = request.args.get("id")
+
+    try:
+        response = requests.get(f"http://127.0.0.1:5002/movies/buscar={movie_id}")
+        if response.status_code == 200:
+            pelicula = response.json()
+            return render_template("index.html", pelicula=pelicula)
+        else:
+            flash(f"No se encontró la película con ID {movie_id}", "error")
+            return redirect("/")
+    except Exception as e:
+        flash(f"Error al buscar la película: {e}", "error")
+        return redirect("/")
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

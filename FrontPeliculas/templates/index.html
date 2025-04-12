@@ -7,6 +7,16 @@
 </head>
 <body class="bg-gray-100 p-10">
     <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md p-8 space-y-8">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="p-2 mb-2 rounded {{ 'bg-green-200 text-green-800' if category == 'success' else 'bg-red-200 text-red-800' }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
 
         <h1 class="text-3xl font-bold text-center text-indigo-600">CRUD de Películas</h1>
 
@@ -42,13 +52,24 @@
                 </form>
         </div>
 
-        <!-- Buscar Película -->
+                <!-- Buscar Película por ID -->
         <div>
             <h2 class="text-xl font-semibold mb-2">Buscar Película por ID</h2>
             <form action="/buscar" method="GET" class="space-y-2">
                 <input type="number" name="id" placeholder="ID" class="w-full border rounded px-3 py-2" required>
                 <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Buscar</button>
             </form>
+
+            {% if pelicula %}
+            <div class="mt-4 p-4 bg-white border rounded shadow">
+                <h3 class="text-lg font-semibold text-gray-700">Resultado:</h3>
+                <p><strong>ID:</strong> {{ pelicula.id }}</p>
+                <p><strong>Título:</strong> {{ pelicula.title }}</p>
+                <p><strong>Género:</strong> {{ pelicula.genre }}</p>
+                <p><strong>Año:</strong> {{ pelicula.year }}</p>
+                <p><strong>Clasificación:</strong> {{ pelicula.classification }}</p>
+            </div>
+            {% endif %}
         </div>
 
         <!-- Mostrar Todas -->
@@ -62,3 +83,4 @@
     </div>
 </body>
 </html>
+
