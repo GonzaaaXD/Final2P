@@ -86,6 +86,18 @@ def buscar_pelicula():
         flash(f"Error al buscar la película: {e}", "error")
         return redirect("/")
 
+@app.route("/peliculas", methods=["GET"])
+def mostrar_peliculas():
+    response = requests.get("http://127.0.0.1:5002/movies/all")
+    
+    if response.status_code == 200:
+        peliculas = response.json()
+        return render_template("index.html", peliculas=peliculas)
+    else:
+        flash("Error al obtener las películas", "danger")
+        return redirect("/")
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
+    

@@ -80,6 +80,34 @@
             </form>
         </div>
 
+        {% if peliculas %}
+            <div class="overflow-x-auto mt-6">
+                <table class="w-full table-auto border-collapse border border-gray-300">
+                <thead class="bg-gray-200">
+                    <tr>
+                    <th class="border border-gray-300 px-4 py-2">ID</th>
+                    <th class="border border-gray-300 px-4 py-2">Título</th>
+                    <th class="border border-gray-300 px-4 py-2">Género</th>
+                    <th class="border border-gray-300 px-4 py-2">Año</th>
+                    <th class="border border-gray-300 px-4 py-2">Clasificación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for peli in peliculas %}
+                    <tr>
+                    <td class="border border-gray-300 px-4 py-2">{{ peli.id }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ peli.title }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ peli.genre }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ peli.year }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ peli.classification }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        {% endif %}
+
+
     </div>
 </body>
 </html>
