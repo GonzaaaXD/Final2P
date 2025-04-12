@@ -20,6 +20,62 @@
 
         <h1 class="text-3xl font-bold text-center text-indigo-600">CRUD de Películas</h1>
 
+                 <!-- Buscar Película por ID -->
+                 <div>
+                    <h2 class="text-xl font-semibold mb-2">Buscar Película por ID</h2>
+                    <form action="/buscar" method="GET" class="space-y-2">
+                        <input type="number" name="id" placeholder="ID" class="w-full border rounded px-3 py-2" required>
+                        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Buscar</button>
+                    </form>
+        
+                    {% if pelicula %}
+                    <div class="mt-4 p-4 bg-white border rounded shadow">
+                        <h3 class="text-lg font-semibold text-gray-700">Resultado:</h3>
+                        <p><strong>ID:</strong> {{ pelicula.id }}</p>
+                        <p><strong>Título:</strong> {{ pelicula.title }}</p>
+                        <p><strong>Género:</strong> {{ pelicula.genre }}</p>
+                        <p><strong>Año:</strong> {{ pelicula.year }}</p>
+                        <p><strong>Clasificación:</strong> {{ pelicula.classification }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+        
+                <!-- Mostrar Todas -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-2">Mostrar Todas las Películas</h2>
+                    <form action="/peliculas" method="GET">
+                        <button type="submit" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Mostrar Todas</button>
+                    </form>
+                </div>
+        
+                {% if peliculas %}
+                    <div class="overflow-x-auto mt-6">
+                        <table class="w-full table-auto border-collapse border border-gray-300">
+                        <thead class="bg-gray-200">
+                            <tr>
+                            <th class="border border-gray-300 px-4 py-2">ID</th>
+                            <th class="border border-gray-300 px-4 py-2">Título</th>
+                            <th class="border border-gray-300 px-4 py-2">Género</th>
+                            <th class="border border-gray-300 px-4 py-2">Año</th>
+                            <th class="border border-gray-300 px-4 py-2">Clasificación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for peli in peliculas %}
+                            <tr>
+                            <td class="border border-gray-300 px-4 py-2">{{ peli.id }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ peli.title }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ peli.genre }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ peli.year }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ peli.classification }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+        
+
         <!-- Agregar Película -->
         <h2 class="text-xl font-semibold mb-2">Agregar Película</h2>
             <form action="/agregar" method="POST" class="space-y-2">
@@ -51,61 +107,6 @@
                     <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Eliminar</button>
                 </form>
         </div>
-
-                <!-- Buscar Película por ID -->
-        <div>
-            <h2 class="text-xl font-semibold mb-2">Buscar Película por ID</h2>
-            <form action="/buscar" method="GET" class="space-y-2">
-                <input type="number" name="id" placeholder="ID" class="w-full border rounded px-3 py-2" required>
-                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Buscar</button>
-            </form>
-
-            {% if pelicula %}
-            <div class="mt-4 p-4 bg-white border rounded shadow">
-                <h3 class="text-lg font-semibold text-gray-700">Resultado:</h3>
-                <p><strong>ID:</strong> {{ pelicula.id }}</p>
-                <p><strong>Título:</strong> {{ pelicula.title }}</p>
-                <p><strong>Género:</strong> {{ pelicula.genre }}</p>
-                <p><strong>Año:</strong> {{ pelicula.year }}</p>
-                <p><strong>Clasificación:</strong> {{ pelicula.classification }}</p>
-            </div>
-            {% endif %}
-        </div>
-
-        <!-- Mostrar Todas -->
-        <div>
-            <h2 class="text-xl font-semibold mb-2">Mostrar Todas las Películas</h2>
-            <form action="/peliculas" method="GET">
-                <button type="submit" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Mostrar Todas</button>
-            </form>
-        </div>
-
-        {% if peliculas %}
-            <div class="overflow-x-auto mt-6">
-                <table class="w-full table-auto border-collapse border border-gray-300">
-                <thead class="bg-gray-200">
-                    <tr>
-                    <th class="border border-gray-300 px-4 py-2">ID</th>
-                    <th class="border border-gray-300 px-4 py-2">Título</th>
-                    <th class="border border-gray-300 px-4 py-2">Género</th>
-                    <th class="border border-gray-300 px-4 py-2">Año</th>
-                    <th class="border border-gray-300 px-4 py-2">Clasificación</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for peli in peliculas %}
-                    <tr>
-                    <td class="border border-gray-300 px-4 py-2">{{ peli.id }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ peli.title }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ peli.genre }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ peli.year }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ peli.classification }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-                </table>
-            </div>
-        {% endif %}
 
 
     </div>

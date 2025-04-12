@@ -20,6 +20,10 @@ def agregar_pelicula():
         "http://127.0.0.1:5002/peliculas/subir",
         json={"title": title, "genre": genre, "year": int(year), "classification": classification}
     )
+    if response.status_code == 201:
+        flash("Error al agregar la película", "danger")
+    else:
+        flash("Película agregada correctamente", "success")
 
     return redirect("/")
 
