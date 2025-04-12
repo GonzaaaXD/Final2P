@@ -28,7 +28,7 @@ def actualizar_pelicula(movie_id: int, movie: schemas.MovieCreate, db: Session =
 def borrar_pelicula(movie_id: int, db: Session = Depends(get_db)):
     db_movie = db.query(models.Movie).filter(models.Movie.id == movie_id).first()
     if not db_movie:
-        raise HTTPException(status_code=404, detail="Movie not found")
+        raise HTTPException(status_code=404, detail="Pelicula no encontrada")
     db.delete(db_movie)
     db.commit()
     return {"mensaje": "Pelicula eliminada exitosamente"}
